@@ -1,0 +1,280 @@
+@white: #fff;
+@black: #000000;
+@orange: #FF611B;
+@gray: #5c5c5c;
+@dark-orange: #ff4929;
+@violet: #750873;
+@light-violet: #75416f;
+@brown: #A52A2A;
+@light-white: #ced4da;
+@white-opacity: #ffffffc7;
+
+form {
+  display: flex;
+  justify-content: space-between;
+
+  .search {
+    width: 40%;
+    margin-right: 30px;
+    position: relative;
+
+    input {
+      display: block;
+      height: 25px;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      color: @white-opacity;
+      background-color: @orange;
+      border: 1px solid @light-white;
+      border-radius: .25rem;
+    }
+
+    .icon {
+      position: absolute;
+      margin-top: 17px;
+      top: -10px;
+      right: -10px;
+      font-size: 16px;
+      z-index: 1;
+      color: @white-opacity;
+    }
+  }
+
+  .select-genre {
+    margin-right: 5px;
+  }
+
+  .select-genre,
+  .select-year {
+    width: 30%;
+
+    select {
+      display: block;
+      height: 38px;
+      color: @white-opacity;
+      background-color: @orange;
+      border: 1px solid @light-white;
+      border-radius: 0.25rem;
+    }
+  }
+}
+
+.table {
+  border-collapse: separate;
+  background-color: @white;
+
+  thead tr {
+    background: @violet;
+    border-bottom: none !important;
+
+    th {
+      position: relative;
+      padding: 10px !important;
+      color: @white;
+      border-radius: 0;
+      text-align: center;
+      font-weight: normal;
+
+      &:first-child {
+        text-align: left;
+      }
+
+      .sort {
+        display: inline-block;
+        position: absolute;
+        right: 10px;
+        top: -2px;
+      }
+    }
+  }
+
+  tbody tr td {
+    text-align: center;
+    padding: 10px;
+
+    &:nth-of-type(1) {
+      text-align: left;
+    }
+  }
+
+  .noSeries {
+    text-align: center !important;
+    background: @white;
+    font-size: 16px !important;
+  }
+}
+
+.horror, .drama, .crime, .tragedy, .dark.comedy {
+  display: inline-block;
+  padding: 0 15px;
+  border-radius: 35px;
+  color: @white;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.horror {
+  background: @brown;
+}
+
+.drama {
+  background: @light-violet;
+}
+
+.crime {
+  background: @violet;
+}
+
+.tragedy {
+  background: @dark-orange;
+}
+
+.dark.comedy {
+  background: @gray;
+}
+
+.pagination {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.pagination-custom /deep/ .ngx-pagination {
+  bottom: 8px;
+  text-align: center;
+  color: @white;
+
+  li {
+    margin: 0;
+    width: 30px;
+    border-radius: 50%;
+
+    span {
+      color: @black;
+      font-size: 14px;
+    }
+
+    a:hover {
+      background: transparent;
+      border-radius: 3px;
+      color: @black;
+    }
+
+    a:active {
+      outline: 0;
+    }
+  }
+
+  .disabled {
+    color: #000000;
+
+    span {
+      display: none;
+    }
+  }
+
+  .pagination-next a {
+    font-size: 0 !important;
+    color: transparent !important;
+    outline: 0;
+  }
+
+  .pagination-previous a {
+    font-size: 0 !important;
+    color: transparent !important;
+    outline: 0;
+  }
+
+  .pagination-next a::after {
+    content: '>';
+    font-size: 14px;
+    margin-right: 0;
+    color: #000000 !important;
+  }
+
+  .pagination-previous a::before {
+    content: '<';
+    font-size: 14px;
+    margin-left: 0;
+    color: #000000 !important;
+  }
+
+  .pagination-next.disabled::after {
+    content: '>';
+    margin-left: 0;
+  }
+
+  .pagination-previous.disabled::before {
+    content: '<';
+    margin-left: 0;
+  }
+
+  .current {
+    background: @orange;
+
+    span {
+      display: block;
+      color: @white;
+      margin-top: 2px;
+    }
+  }
+}
+
+button {
+  cursor: pointer;
+  font-size: 14px;
+  height: 26px;
+  margin: 7px;
+  outline: 0;
+  border: 0;
+  background: transparent;
+  width: 26px;
+}
+
+.button {
+  position: absolute;
+  right: 0;
+  margin-top: 9px;
+}
+
+.active {
+  background-color: @orange;
+  color: @white;
+}
+
+@media only screen and (max-width: 768px) {
+  .table thead tr th {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+
+    &:last-child {
+      text-align: left;
+    }
+  }
+
+  .button button {
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  form {
+    select {
+      white-space: pre-wrap;
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: 3px;
+      font-size: 12px;
+    }
+
+    .search {
+      input {
+        font-size: 12px;
+      }
+
+      .icon {
+        font-size: 12px;
+        top: -7px;
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@light-white: #ced4da;
+@light-violet: #e0dbeb;
+
+body {
+  background-color: @light-violet;
+}
+
+.mat-sort-header-container {
+  justify-content: center !important;
+}
+
+.mat-sort-header-arrow {
+  display: none !important;
+}
+
+.mat-sort-header-button:focus {
+  background-color: transparent !important;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid @light-white;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}

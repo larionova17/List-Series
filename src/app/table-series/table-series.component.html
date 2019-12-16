@@ -1,0 +1,57 @@
+<form [formGroup]="formSeries">
+  <div class="search">
+    <label for="search">
+      <input type="text" id="search" name="search" formControlName="search" placeholder=" Name" (ngModelChange)="nameFilter($event)"/>
+    </label>
+    <span class="icon"><i class="fa fa-search"></i></span>
+  </div>
+  <div class="select-genre">
+      <select  (ngModelChange)="genreFilter($event)" formControlName="genre">
+        <option class="genre">Genre</option>
+        <option  *ngFor="let genre of genreList" [value]="genre">{{genre}}</option>
+      </select>
+  </div>
+  <div class="select-year">
+    <select  (ngModelChange)="yearFilter($event)" formControlName="year">
+      <option class="year">Premiere Year</option>
+      <option  *ngFor="let year of yearsList" [value]="year.getFullYear()">{{year.getFullYear()}}</option>
+    </select>
+  </div>
+</form>
+<table class="table"  matSort (matSortChange)="sortData($event)">
+  <thead class="thead-inverse">
+  <tr>
+    <th><span>Name</span>
+      <div class="sort"><span mat-sort-header="name-top">&#8743;</span><span
+        mat-sort-header="name-bottom">&#8744;</span></div>
+    </th>
+    <th>Season</th>
+    <th>Network</th>
+    <th><span>Premiere</span>
+      <div class="sort"><span mat-sort-header="premiere-top">&#8743;</span><span mat-sort-header="premiere-bottom">&#8744;</span>
+      </div>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let series of seriesItems.items | paginate: {id: 'seriesPagination', itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: seriesItems.total}">
+    <td><div>{{series.name}}</div><div *ngFor="let genre of series.genre" class="{{genre}}">{{genre}}</div></td>
+    <td>{{series.season}}</td>
+    <td>{{series.network}}</td>
+    <td>{{series.premiere.toLocaleDateString()}}</td>
+  </tr>
+  <tr *ngIf="seriesItems.items.length === 0">
+    <td colspan="6" class="noSeries">No Series</td>
+  </tr>
+  </tbody>
+</table>
+<div class="pagination" *ngIf="seriesItems.total">
+  <pagination-controls *ngIf="seriesItems.total"
+                         (pageChange)="pageChanged($event)" class="pagination-custom"
+                         maxSize="3"
+                         id="seriesPagination">
+  </pagination-controls>
+  <div class="button">
+    <button *ngFor="let item of itemsNum" (click)="changeItemsPerPage(item)" [class.active]="item == activeItem">{{item}}</button>
+  </div>
+</div>
